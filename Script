@@ -1,0 +1,36 @@
+using UnityEngine;
+
+public class AdivinaElNumero : MonoBehaviour
+{
+    private int numeroSecreto;
+    
+    void Start()
+    {
+        // Genera un número aleatorio entre 1 y 10
+        numeroSecreto = Random.Range(1, 11);
+        Debug.Log("Adivina el número entre 1 y 10.");
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return)) // Cuando presiona Enter
+        {
+            int intento;
+            if (int.TryParse(Input.inputString, out intento)) // Convierte el input en número
+            {
+                if (intento == numeroSecreto)
+                {
+                    Debug.Log("¡Felicidades! Adivinaste el número.");
+                }
+                else
+                {
+                    Debug.Log("Número incorrecto. Intenta de nuevo.");
+                }
+            }
+            else
+            {
+                Debug.Log("Ingresa un número válido.");
+            }
+        }
+    }
+}
